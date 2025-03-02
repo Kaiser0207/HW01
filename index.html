@@ -1,85 +1,12 @@
-<script>
-    // 預加載替代的貓咪圖片
-    const preload = new Image();
-    preload.src = "imgs/op.png";
+<!DOCTYPE html>
 
-    // 獲取貓咪元素
-    const cat = document.getElementById("p");
+<html lang="en">
+<head>
+    <title>POPCAT CLASSIC</title>
+</head>
 
-    // 點擊音效陣列
-    const pops = [
-        "pops/pop1.mp3",
-        "pops/pop2.mp3",
-        "pops/pop3.mp3",
-        "pops/pop4.mp3"
-    ];
-    let popIndex = 0;
-
-    /**
-     * Cookie 工具函數
-     */
-// 獲取 Cookie
-    function getCookie(cookieName) {
-        const name = cookieName + "=";
-        const decodedCookie = decodeURIComponent(document.cookie);
-        const cookieArray = decodedCookie.split(';');
-
-        for (let i = 0; i < cookieArray.length; i++) {
-            let cookie = cookieArray[i];
-
-            // 去除空白字符
-            while (cookie.charAt(0) === ' ') {
-                cookie = cookie.substring(1);
-            }
-
-            if (cookie.indexOf(name) === 0) {
-                return cookie.substring(name.length, cookie.length);
-            }
-        }
-        return "";
-    }
-
-    // 設置 Cookie
-    function setCookie(cookieName, cookieValue, expirationDays) {
-        const date = new Date();
-        date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
-    }
-
-    // 獲取點擊計數並初始化顯示
-    let popCount = getCookie("pop_count") || 0;
-    cat.innerHTML = popCount > 0 ? popCount : "";
-
-    /**
-     * 貓咪動作函數
-     */
-// 張嘴函數 - 當按下時執行
-    const openMouth = function() {
-        // 更改貓咪圖片 ID 為張嘴狀態
-        cat.id = "op";
-
-        // 播放點擊音效
-        const audio = new Audio(pops[popIndex]);
-        audio.load();
-        audio.play();
-
-        // 更新下一個音效索引
-        popIndex = (popIndex + 1) % pops.length;
-
-        // 增加點擊計數並更新顯示
-        popCount++;
-        cat.innerHTML = popCount;
-        setCookie("pop_count", popCount, 365);
-    };
-
-    // 閉嘴函數 - 當釋放時執行
-    const closeMouth = () => setTimeout(() => cat.id = "p", 25);
-
-    // 事件監聽器
-    document.addEventListener("pointerup", closeMouth);   // 釋放指針時閉嘴
-    document.addEventListener("keyup", closeMouth);       // 釋放按鍵時閉嘴
-    document.addEventListener("pointerdown", openMouth);  // 按下指針時張嘴
-    document.addEventListener("keydown", openMouth);      // 按下按鍵時張嘴
-
-</script>
+<body>
+<img class="title" src="imgs/popcat.svg" alt="POPCAT">
+<div class="cat-img" id="p">0</div>
+</body>
+</html>
