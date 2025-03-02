@@ -39,81 +39,32 @@
             animation: object 1.5s infinite ease-in-out;
         }
 
-        //給我一個login button
         .login {
-            position: absolute;
-            top: 50%;
-            left: 50%;
             transform: translate(-50%, -50%);
             padding: 10px 20px;
-            background-color: #333;
+            background-color: white;
             color: #fff;
             border: none;
+            bordor-radius: 3px;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
-
-        #object_one {
-            -webkit-animation-delay: 0s;
-            animation-delay: 0s;
-        }
-
-        #object_two {
-            -webkit-animation-delay: 0.3s;
-            animation-delay: 0.3s;
-        }
-
-        #object_three {
-            -webkit-animation-delay: 0.6s;
-            animation-delay: 0.6s;
-        }
-
-        #object_four {
-            -webkit-animation-delay: 0.9s;
-            animation-delay: 0.9s;
-        }
-
-        #object_five {
-            -webkit-animation-delay: 1.2s;
-            animation-delay: 1.2s;
-        }
-
-        #object_six {
-            -webkit-animation-delay: 1.5s;
-            animation-delay: 1.5s;
-        }
-
-        #object_seven {
-            -webkit-animation-delay: 1.8s;
-            animation-delay: 1.8s;
-        }
-
-        #object_eight {
-            -webkit-animation-delay: 2.1s;
-            animation-delay: 2.1s;
-        }
-
-        @-webkit-keyframes object {
-            0%, 100% {
-                -webkit-transform: translateY(0);
-                transform: translateY(0);
-            }
-
-            50% {
-                -webkit-transform: translateY(-15px);
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes object {
-            0%, 100% {
-                -webkit-transform: translateY(0);
 
     </style>
 </head>
 
 <body>
-
-    //建立一個等待頁面的容器
+    <span id="warning-container">
+        <span id="warning">請稍後，頁面載入中...</span>
+    </span>
+    /*建立一個header放image.png在左上角，右上角放login button*/
+    <header>
+        <img src="image.png" alt="logo" class="logo">
+        <button class="login">
+            <span>登入</span>
+        </button>
+    /*建立一個等待頁面的容器*/
     <div id="loading">
         <div id="loading-center">
             <div id="loading-center-absolute">
