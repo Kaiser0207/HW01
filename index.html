@@ -33,72 +33,7 @@
         p {
             color: #2d2d2d;
         }
-        /*設定警告樣式*/
-        #warning-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        #warning {
-            padding: 20px;
-            background-color: white;
-            color: #2d2d2d;
-            border-radius: 5px;
-            font-size: 20px;
-        }
-        /*設定按鈕樣式*/
 
-        .login {
-            /*原角邊框5px*/
-            /*背景顏色淡紅色*/
-            /*文字顏色黑色*/
-            /*字體大小20px*/
-            /*字體粗細700*/
-            border-radius: 5px;
-            background-color: #f77062;
-            color: black;
-            font-size: 20px;
-            font-weight: 700;
-            padding: 10px 20px;
-            margin: 10px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            cursor: pointer;
-            transition: 0.3s ease;
-            border-radius: 5px;
-            display: inline-block;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            background-image: linear-gradient(45deg, #f77062, #fe5196);
-
-        }
-        .login::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background-color: white;
-            transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease;
-            border-radius: 50%;
-            z-index: 0;
-            transform: translate(-50%, -50%);
-        }
-        .login:hover::before {
-            width: 0;
-            height: 0;
-            top: 50%;
-            left: 50%;
-        }
         /*載入圖片樣式*/
         img {
             position: absolute;
@@ -109,6 +44,22 @@
             object-fit: cover;
             opacity: 0.1;
         }
+
+        .button{
+            padding: 10px 20px;
+            border: none;
+            background-color: #f77062;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 5px;
+            MARGIN-TOP: 10PX;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-decoration: none;
+
+        }
+
     </style>
 </head>
 
@@ -118,18 +69,14 @@
     </span>
 
     <div class="container">
-        <img src="image.png" alt="台南好行logo" style="position: absolute; top: 0; left: 0; width: 100; height: 100;" >
-        <button class="login">
-            <span>登入</span>
-        </button>
+        <img src="image.png" alt="logo" style="position: absolute; top: 0; left: 0; width: 100px; height: 100px;">
         <h1>人數眾多，伺服器中斷中</h1>
         <img class="loading-image" src="Loading_icon.gif" alt="loading">
         <p>
             很抱歉，我們的伺服器目前無法處理您的請求。請稍後再試一次。
         </p>
-        <button class="login" onclick="window.location.href='index.php'">
-            <span>回首頁</span>
-        </button>
-
+        /*按鈕連結回首頁*/
+        <a href="https://www.taiwantrip.com.tw/Frontend" class="button">回首頁</a>
+    </div>
 </body>
 </html>
