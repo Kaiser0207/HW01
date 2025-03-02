@@ -1,80 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-    <title>POPCAT CLASSIC</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>等待頁面</title>
     <style>
-
-        /* 1. 基本設定 */
-        body {
-            /* 移除預設邊距 */
-            margin: 0;
-            /* 設定字體 */
-            font-family: sans-serif;
-        }
-
-        .container {
-            /* 設定背景色 */
-            background-color: #bdaa90;
-            /* 防止文字被選取 */
-            user-select: none;
-
-            /* 讓內容佔滿整個視窗 */
-            height: 100vh;
-
-            /* 垂直排列內容 */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* 2. 標題圖片 */
-        .title {
-            /* 上方間距 */
-            margin-top: 2em;
-
-            /* 寬度設定 */
-            width: 80%;
-            max-width: 600px;
-        }
-
-        /* 3. 貓咪圖片 */
-        .cat-img {
-            /* 填滿剩餘空間 */
-            flex: 1;
-
-            /* 寬度設定 */
+        #loading {
+            position: fixed;
             width: 100%;
-            max-width: 800px;
-
-            /* 背景圖片設定 */
-            background-position: bottom;
-            background-size: contain;
-            background-repeat: no-repeat;
-
-            /* 文字置中 */
-            text-align: center;
-            /* 文字樣式 */
-            color: white;
-            font-size: 80px;
-            font-weight: 900;
-            -webkit-text-stroke: 3px black;
-
+            height: 100%;
+            background: #fff;
+            z-index: 9999;
         }
 
-        /* 4. 貓咪狀態 */
-        #p {
-            background-image: url("imgs/p.png");
+        #loading-center {
+            width: 100%;
+            height: 100%;
+            position: relative;
         }
-        #op {
-            background-image: url("imgs/op.png");
+
+        #loading-center-absolute {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 50px;
+            width: 50px;
+            margin-top: -25px;
+            margin-left: -25px;
         }
+
+        .object {
+            width: 10px;
+            height: 10px;
+            background-color: #333;
+            float: left;
+            margin: 15px 5px;
+            -webkit-animation: object 1.5s infinite ease-in-out;
+            animation: object 1.5s infinite ease-in-out;
+        }
+
+        //給我一個login button
+        .login {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #object_one {
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+        }
+
+        #object_two {
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+
+        #object_three {
+            -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+        }
+
+        #object_four {
+            -webkit-animation-delay: 0.9s;
+            animation-delay: 0.9s;
+        }
+
+        #object_five {
+            -webkit-animation-delay: 1.2s;
+            animation-delay: 1.2s;
+        }
+
+        #object_six {
+            -webkit-animation-delay: 1.5s;
+            animation-delay: 1.5s;
+        }
+
+        #object_seven {
+            -webkit-animation-delay: 1.8s;
+            animation-delay: 1.8s;
+        }
+
+        #object_eight {
+            -webkit-animation-delay: 2.1s;
+            animation-delay: 2.1s;
+        }
+
+        @-webkit-keyframes object {
+            0%, 100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+
+            50% {
+                -webkit-transform: translateY(-15px);
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes object {
+            0%, 100% {
+                -webkit-transform: translateY(0);
+
     </style>
 </head>
 
 <body>
-<div class="container">
-    <img class="title" src="imgs/popcat.svg" alt="POPCAT">
-    <div class="cat-img" id="p">0202</div>
+
+    //建立一個等待頁面的容器
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_four"></div>
+                <div class="object" id="object_five"></div>
+                <div class="object" id="object_six"></div>
+                <div class="object" id="object_seven"></div>
+                <div class="object" id="object_eight"></div>
+            </div>
+        </div>
+
 </div>
 
 </body>
