@@ -8,28 +8,29 @@
 
         /*設定全域樣式*/
         body {
-            /*使用微軟政黑體*/
-            /*文字置中*/
-            /*背景顏色為淡紅色*/
             font-family: '微軟正黑體', sans-serif;
             text-align: center;
-            background-color: #f5f5f5;
+            background-color: white;
             padding: 40px;
+            margin: 0;
+            color: #f77062;
         }
 
         .container {
+            max-width: 600px;
+            margin: 0 auto;
             padding: 10px;
             display: flex;
-            border-radius: 5px;
-            background-color: #f5f5f5;
-            animation: fadein 1s ease-in;
+            border-radius: 10px;
+            background-color: grey;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
             font-family: '微軟正黑體', sans-serif;
         }
         /*標題樣式 顏色淡紅色*/
         h1 {
-            color: darkred;
+            color: #f77062;
         }
-        /*段落樣式 顏色深藍色*/
+        /*段落樣式*/
         p {
             color: #2d2d2d;
         }
@@ -46,8 +47,8 @@
         }
 
         .button{
+            display: inline-block;
             padding: 10px 20px;
-            border: none;
             background-color: #f77062;
             color: white;
             font-size: 20px;
@@ -57,19 +58,22 @@
             cursor: pointer;
             transition: 0.3s ease;
             text-decoration: none;
+        }
 
+        .loading-image {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
         }
 
     </style>
 </head>
-
 <body>
     <span id="warning-container">
         <span id="warning">請稍後，頁面載入中...</span>
     </span>
-
     <div class="container">
-        <img src="image.png" alt="logo" style="position: absolute; top: 0; left: 0; width: 100px; height: 100px;">
+        <img src="image.png" alt="logo" style="position: absolute; top: 0; left: 0; width: 500px; height: 50px;">
         <h1>人數眾多，伺服器中斷中</h1>
         <img class="loading-image" src="Loading_icon.gif" alt="loading">
         <p>
