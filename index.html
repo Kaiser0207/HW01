@@ -3,140 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONSTER HUNTER WILDS | 伺服器暫時忙碌中</title>
+    <title>MONSTER HUNTER WILDS | 伺服器努力工作中</title>
     <style>
+        /* Ensure you have Source Han Serif TC font available, otherwise provide a fallback or import it */
+        /* @import url('https://fonts.googleapis.com/css2?family=Source+Han+Serif+TC:wght@400;700&display=swap'); */
         body {
-            font-family: 'DFKai-SB', 'Arial', sans-serif;
+            font-family: 'DFKai-SB', "source-han-serif-tc", 'Arial', sans-serif; /* Added source-han-serif-tc */
             text-align: center;
-            background-color: white;
-            color: white;
-            padding: 0;
-            display: flex;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px;
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            overflow-x: hidden;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .logo-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+
+        .logo-link img {
+            width: 250px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo-link img:hover {
+            transform: scale(1.05);
         }
 
         .container {
-            width: 450px;
-            margin: auto;
-            padding: 30px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            color: #4b4b4b;
         }
 
         h1 {
-            color: #92602b;
+            color: #8b4513;
             font-weight: 900;
-            font-size: 32px;
+            font-size: 28px;
+            margin-bottom: 15px;
         }
 
-        p {
+        p, .info-section p {
             color: #4b4b4b;
-            font-weight: 900;
-            font-size: 20px;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         .loading-image {
-            width: 434px;
-            height: 200px;
-            margin: 10px auto;
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            margin: 15px auto;
+            border-radius: 5px;
         }
 
         .button {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #92602b;
+            padding: 12px 25px;
+            background-color: #8b4513;
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
-            border-radius: 5px;
+            border-radius: 8px;
             margin-top: 10px;
+            margin-right: 10px;
             cursor: pointer;
             transition: 0.3s ease;
             text-decoration: none;
+            border: none;
         }
 
         .button:hover {
-            box-shadow: 0 0 5px 2px #ffcc00;
+            background-color: #a0522d;
+            box-shadow: 0 0 8px 2px #ffcc00;
+        }
+
+        .button.secondary {
+            background-color: #6c757d;
+        }
+        .button.secondary:hover {
+            background-color: #5a6268;
         }
 
         a {
-            color: #4b4b4b;
+            color: #8b4513;
+            text-decoration: underline;
+        }
+        a:hover {
+            color: #a0522d;
         }
 
-        .youtube-video {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 400px;
-            height: 225px;
-            border: none;
+        .youtube-video-container {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
             transition: box-shadow 0.3s ease;
         }
+        .youtube-video-container:hover {
+            box-shadow: 0 0 10px 3px rgb(255, 204, 0);
+        }
 
-        .youtube-video:hover {
-            box-shadow: 0 0 5px 2px rgb(255, 204, 0);
+        .video-title-text {
+            -webkit-text-size-adjust: 100%;
+            font-feature-settings: "palt";
+            letter-spacing: .05em;
+            box-sizing: border-box;
+            margin: 0 0 0.8rem 0;
+            padding: 0;
+            color: #fcf5de;
+            text-align: center;
+            text-shadow: 0 0 6px rgba(0,0,0,.4),0 0 6px rgba(0,0,0,.4);
+            font-size: 1.7rem;
+            font-family: "source-han-serif-tc", sans-serif;
+            line-height: 1.5;
+            width: 100%;
         }
 
         .language-menu {
             position: fixed;
-            top: 30px;
-            right: 30px;
-            background-color: rgba(255, 255, 255, 0.4);
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
             border: 1px solid #ccc;
-            border-radius: 15px;
-            padding: 10px;
+            border-radius: 10px;
+            padding: 8px 12px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
         }
 
         .language-menu select {
             border: none;
             background: none;
-            font-size: 16px;
-            font-weight: 900;
+            font-size: 15px;
+            font-weight: 700;
+            color: #4b4b4b;
             cursor: pointer;
         }
-
-        .en h1 {
-            font-size: 32px;
+        .language-menu select:focus {
+            outline: none;
         }
 
-        .en p, .en .button {
+        .info-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(0,0,0, 0.03);
+            border-radius: 8px;
+            text-align: left;
+        }
+        .info-section h2 {
+            color: #8b4513;
             font-size: 20px;
+            margin-bottom: 10px;
         }
 
-        .ja h1 {
-            font-size: 32px;
+        .social-links {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        .social-links p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            margin: 0 8px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .social-icon:hover {
+            opacity: 1;
+            transform: scale(1.1);
         }
 
-        .ja p, .ja .button {
-            font-size: 20px;
+        .fixed-video-area {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+            width: 320px;
         }
+
+
+        /* Language-specific font adjustments */
+        .en h1, .ja h1 { font-size: 26px; }
+        .en p, .en .button, .ja p, .ja .button { font-size: 17px; }
+        .en .info-section p, .ja .info-section p { font-size: 16px; }
 
     </style>
 </head>
 <body>
-<span id="warning-container">
-        <span id="warning"></span>
-    </span>
-<div class="container" id="content">
-    <img src="body.jpg" alt="background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; object-fit: cover;">
-    <a href="https://www.monsterhunter.com/wilds/zh-hant/">
-        <img src="logo.webp" alt="logo" style="position: absolute; top: 0; left: 0; width: 348px; height: 208px;">
-    </a>
-    <h1>獵人眾多，伺服器中斷中</h1>
-    <p>很抱歉，我們的伺服器目前無法處理您的請求。</p>
-    <img src="image.gif" alt="loading" class="loading-image";>
-    <p>請稍後再試一次。</p>
-    <p>如果遇到其他問題，請聯絡<a href='https://www.monsterhunter.com/wilds/zh-hant/'>官方網站</a>。</p>
-    <a href="https://www.monsterhunter.com/wilds/zh-hant/" class="button">回首頁</a>
+<img src="body.jpg" alt="background" class="background-image">
+<a href="https://www.monsterhunter.com/wilds/zh-hant/" class="logo-link">
+    <img src="logo.webp" alt="Monster Hunter Wilds Logo">
+</a>
+
+<div class="container" id="content-container">
+    <h1 id="main-title">獵人眾多，伺服器努力工作中！</h1>
+    <p id="main-message">各位獵人，感謝您的耐心！我們的伺服器正在全力處理湧入的請求。</p>
+    <img src="image.gif" alt="Palico working hard" class="loading-image">
+
+    <div class="info-section" id="status-update-section">
+        <h2 id="status-title">目前情況</h2>
+        <p id="status-text">我們正在密切監控伺服器負載，並調配更多資源。預計很快能恢復部分服務，請各位獵人稍後再嘗試。</p>
+        <p id="timer-text">建議刷新時間：<span id="countdown">60</span> 秒</p>
+    </div>
+
+    <div class="info-section" id="reassurance-section">
+        <h2 id="reassurance-title">請您放心</h2>
+        <p id="reassurance-text">若您剛才正在進行購買或重要操作，請不用擔心。系統設計有保護機制，您的交易資料是安全的。一旦服務恢復，您可以檢查您的訂單狀態或聯繫客服確認。</p>
+    </div>
+
+    <div class="info-section" id="while-you-wait-section">
+        <h2 id="wait-title">等待時，您可以...</h2>
+        <ul style="text-align: left; padding-left: 20px; font-size: 18px; color: #4b4b4b; font-weight: 700;">
+            <li id="wait-opt1">觀看下方的最新遊戲預告片。</li>
+            <li id="wait-opt2">前往 <a href="https://www.monsterhunter.com/wilds/zh-hant/" target="_blank" id="official-site-link-wait">官方網站</a> 查閱最新消息。</li>
+            <li id="wait-opt3">在社群媒體上看看其他獵人的討論。</li>
+        </ul>
+    </div>
+
+    <a href="https://www.monsterhunter.com/wilds/zh-hant/" class="button" id="home-button">回首頁/重試</a>
+    <button onclick="location.reload();" class="button secondary" id="refresh-button">立即刷新</button>
+
+
+    <div class="social-links">
+        <p id="social-text">追蹤我們以獲取即時更新：</p>
+        <a href="https://x.com/MH_official_JP" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/100px-X_logo_2023.svg.png" alt="X (Twitter)" class="social-icon"></a>
+        <a href="https://www.facebook.com/monsterhunter" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/100px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook" class="social-icon"></a>
+        <a href="https://www.youtube.com/@monsterhunter" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/100px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube" class="social-icon"></a>
+    </div>
 </div>
-<div class="youtube-frame">
-    <iframe class="youtube-video" src="https://www.youtube.com/embed/K5cDjHHIeLw?si=8IruN-A5dTnNcnx3" allowfullscreen></iframe>
+
+<div class="fixed-video-area">
+    <p class="video-title-text" id="video-overlay-text-content">《Street Fighter 6》特別合作登場！</p>
+    <div class="youtube-video-container">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/2V8qTSzy5WM?si=OtFdEaLlemDIiyuI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+</div>
+
 <div class="language-menu">
     <select id="language-select" onchange="changeLanguage()">
         <option value="zh-TW">繁體中文</option>
@@ -144,47 +277,153 @@
         <option value="ja">日本語</option>
     </select>
 </div>
+
 <script>
     const content = {
         "zh-TW": {
-            title: "獵人眾多，伺服器中斷中",
-            message: "很抱歉，我們的伺服器目前無法處理您的請求。",
-            tryAgain: "請稍後再試一次。",
-            contact: "如果遇到其他問題，請聯絡<a href='https://www.monsterhunter.com/wilds/zh-hant/'>官方網站</a>。",
-            home: "回首頁"
+            pageTitle: "MONSTER HUNTER WILDS | 伺服器努力工作中",
+            mainTitle: "獵人眾多，伺服器努力工作中！",
+            mainMessage: "各位獵人，感謝您的耐心！我們的伺服器正在全力處理湧入的請求。",
+            statusTitle: "目前情況",
+            statusText: "我們正在密切監控伺服器負載，並調配更多資源。預計很快能恢復部分服務，請各位獵人稍後再嘗試。",
+            timerText: "建議刷新時間：",
+            reassuranceTitle: "請您放心",
+            reassuranceText: "若您剛才正在進行購買或重要操作，請不用擔心。系統設計有保護機制，您的交易資料是安全的。一旦服務恢復，您可以檢查您的訂單狀態或聯繫客服確認。",
+            waitTitle: "等待時，您可以...",
+            waitOpt1: "觀看下方的最新遊戲預告片。",
+            waitOpt2: "前往 <a href='https://www.monsterhunter.com/wilds/zh-hant/' target='_blank' id='official-site-link-wait'>官方網站</a> 查閱最新消息。",
+            waitOpt3: "在社群媒體上看看其他獵人的討論。",
+            homeButton: "回首頁/重試",
+            refreshButton: "立即刷新",
+            socialText: "追蹤我們以獲取即時更新：",
+            videoOverlayText: "《Street Fighter 6》特別合作登場！",
+            youtubeId: "vlAm9kHEJ2s"
         },
         "en": {
-            title: "Due to too much hunters,<br>the server is temporary down",
-            message: "Sorry, our server is currently unable.",
-            tryAgain: "Please try again later.",
-            contact: "If you encounter other issues,<br>please contact <a href='https://www.monsterhunter.com/wilds/en-us/'>the official website</a>.",
-            home: "Home"
+            pageTitle: "MONSTER HUNTER WILDS | Servers Working Hard",
+            mainTitle: "Many Hunters Online! Servers are Working Hard!",
+            mainMessage: "Hunters, thank you for your patience! Our servers are currently processing a high volume of requests.",
+            statusTitle: "Current Status",
+            statusText: "We are closely monitoring server load and allocating more resources. We expect services to resume shortly. Please try again in a bit.",
+            timerText: "Suggested refresh in: ",
+            reassuranceTitle: "Rest Assured",
+            reassuranceText: "If you were in the middle of a purchase or important action, please don't worry. Our system has safeguards, and your transaction data is secure. Once services are restored, please check your order status or contact support.",
+            waitTitle: "While You Wait, You Can...",
+            waitOpt1: "Watch the latest game trailer below.",
+            waitOpt2: "Visit the <a href='https://www.monsterhunter.com/wilds/en-us/' target='_blank' id='official-site-link-wait'>official website</a> for the latest news.",
+            waitOpt3: "Check out discussions from other hunters on social media.",
+            homeButton: "Home/Retry",
+            refreshButton: "Refresh Now",
+            socialText: "Follow us for live updates:",
+            videoOverlayText: "Street Fighter 6 Special Collaboration Event!",
+            youtubeId: "vlAm9kHEJ2s"
         },
         "ja": {
-            title: "ハンターが多すぎるため、<br>サーバーがダウンしています",
-            message: "申し訳ございません。<br>現在、サーバーはご利用いただけません。",
-            tryAgain: "しばらくしてから、もう一度お試しください。",
-            contact: "他の問題が発生した場合は、<br><a href='https://www.monsterhunter.com/wilds/ja-jp/'>公式サイト</a>までお問い合わせください。",
-            home: "ホームへ戻る"
+            pageTitle: "MONSTER HUNTER WILDS | サーバー対応中",
+            mainTitle: "ハンター多数接続中！サーバーが対応作業中です！",
+            mainMessage: "ハンターの皆様、しばらくお待ちいただきありがとうございます！現在、サーバーが大量のリクエストを処理中です。",
+            statusTitle: "現在の状況",
+            statusText: "サーバーの負荷を注視し、リソースを増強中です。間もなく一部サービスが復旧する見込みです。ハンターの皆様は、しばらくしてから再度お試しください。",
+            timerText: "推奨リフレッシュ時間：",
+            reassuranceTitle: "ご安心ください",
+            reassuranceText: "購入手続きや重要な操作の最中だった場合でもご安心ください。システムには保護機能があり、お客様の取引データは安全です。サービス復旧後、注文状況をご確認いただくか、サポートまでお問い合わせください。",
+            waitTitle: "お待ちの間、こちらをご覧ください...",
+            waitOpt1: "下の最新ゲームトレーラーをご覧ください。",
+            waitOpt2: "<a href='https://www.monsterhunter.com/wilds/ja-jp/' target='_blank' id='official-site-link-wait'>公式サイト</a>で最新情報をご確認ください。",
+            waitOpt3: "ソーシャルメディアで他のハンターの議論をチェックしましょう。",
+            homeButton: "ホームへ/再試行",
+            refreshButton: "今すぐ更新",
+            socialText: "リアルタイムの更新情報をフォローしてください：",
+            videoOverlayText: "『ストリートファイター6』スペシャルコラボ開催！", // Added & Translated
+            youtubeId: "vlAm9kHEJ2s"
         }
     };
 
+    let countdownInterval;
+
+    function startCountdown(duration, display) {
+        let timer = duration, seconds;
+        clearInterval(countdownInterval);
+        countdownInterval = setInterval(function () {
+            seconds = parseInt(timer % 60, 10);
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            display.textContent = seconds;
+
+            if (--timer < 0) {
+                display.textContent = "00";
+                clearInterval(countdownInterval);
+            }
+        }, 1000);
+    }
+
+
     function changeLanguage() {
         const lang = document.getElementById("language-select").value;
-        const container = document.querySelector(".container");
+        const currentContent = content[lang];
+        const container = document.getElementById("content-container");
 
-        // Use innerHTML instead of textContent for the title
-        container.querySelector("h1").innerHTML = content[lang].title;
-        container.querySelectorAll("p")[0].innerHTML = content[lang].message;
-        container.querySelectorAll("p")[1].innerHTML = content[lang].tryAgain;
-        container.querySelectorAll("p")[2].innerHTML = content[lang].contact;
-        container.querySelector(".button").textContent = content[lang].home;
+        document.title = currentContent.pageTitle;
+        container.querySelector("#main-title").innerHTML = currentContent.mainTitle;
+        container.querySelector("#main-message").innerHTML = currentContent.mainMessage;
+
+        container.querySelector("#status-title").innerHTML = currentContent.statusTitle;
+        container.querySelector("#status-text").innerHTML = currentContent.statusText;
+
+        const countdownTextEl = container.querySelector("#timer-text");
+        const countdownSpan = countdownTextEl.querySelector("#countdown") || document.createElement('span');
+        countdownSpan.id = 'countdown';
+        countdownTextEl.textContent = currentContent.timerText;
+        countdownTextEl.appendChild(countdownSpan);
+        startCountdown(60, countdownSpan);
+
+        container.querySelector("#reassurance-title").innerHTML = currentContent.reassuranceTitle;
+        container.querySelector("#reassurance-text").innerHTML = currentContent.reassuranceText;
+
+        container.querySelector("#wait-title").innerHTML = currentContent.waitTitle;
+        container.querySelector("#wait-opt1").innerHTML = currentContent.waitOpt1;
+        const waitOpt2Link = container.querySelector("#wait-opt2");
+        waitOpt2Link.innerHTML = currentContent.waitOpt2;
+
+
+        container.querySelector("#wait-opt3").innerHTML = currentContent.waitOpt3;
+
+        container.querySelector("#home-button").textContent = currentContent.homeButton;
+        container.querySelector("#refresh-button").textContent = currentContent.refreshButton;
+        container.querySelector("#social-text").innerHTML = currentContent.socialText;
+
+        // Update video overlay text
+        document.getElementById("video-overlay-text-content").textContent = currentContent.videoOverlayText;
+
+        const logoLink = document.querySelector(".logo-link");
+        const homeButtonLink = container.querySelector("#home-button");
+        let officialSiteUrl = 'https://www.monsterhunter.com/wilds/zh-hant/';
+        if (lang === 'en') officialSiteUrl = 'https://www.monsterhunter.com/wilds/en-us/';
+        if (lang === 'ja') officialSiteUrl = 'https://www.monsterhunter.com/wilds/ja-jp/';
+
+        logoLink.href = officialSiteUrl;
+        homeButtonLink.href = officialSiteUrl;
+
+        document.getElementById("youtube-player").src = `https://www.youtube.com/embed/${currentContent.youtubeId}?autoplay=0&mute=1&hl=${lang}`;
+
 
         container.className = "container";
         if (lang === "en" || lang === "ja") {
             container.classList.add(lang);
         }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const userLang = navigator.language || navigator.userLanguage;
+        const selectElement = document.getElementById("language-select");
+        if (userLang.startsWith("en")) {
+            selectElement.value = "en";
+        } else if (userLang.startsWith("ja")) {
+            selectElement.value = "ja";
+        } else {
+            selectElement.value = "zh-TW";
+        }
+        changeLanguage();
+    });
 
 </script>
 </body>
