@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONSTER HUNTER WILDS | 伺服器努力工作中</title>
+    <link rel="icon" type="image/png" href="01.png">
     <style>
-        /* Ensure you have Source Han Serif TC font available, otherwise provide a fallback or import it */
-        /* @import url('[https://fonts.googleapis.com/css2?family=Source+Han+Serif+TC:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Source+Han+Serif+TC:wght@400;700&display=swap)'); */
+        @import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600;700&display=swap');
+
         body {
-            font-family: 'DFKai-SB', "source-han-serif-tc", 'Arial', sans-serif; /* Added source-han-serif-tc */
+            font-family: 'DFKai-SB', "source-han-serif-tc", 'Arial', sans-serif;
             text-align: center;
             background-color: #f0f0f0;
             color: #333;
@@ -22,14 +23,14 @@
             overflow-x: hidden;
         }
 
-        .background-image {
+        #background-video {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
             object-fit: cover;
+            z-index: -1;
         }
 
         .logo-link {
@@ -54,10 +55,32 @@
             margin: 20px auto;
             padding: 25px;
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.85);
+            background: linear-gradient(0deg, rgba(52,39,1,0.85), rgba(10,8,0,0.7));
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             color: #4b4b4b;
+            position: relative;
         }
+
+        .container.en {
+            font-family: 'Markazi Text', "source-han-serif-japanese", serif;
+        }
+
+        .container.en .button {
+            font-family: 'Markazi Text', "source-han-serif-japanese", serif;
+        }
+
+        .corner-frame {
+            position: absolute;
+            width:  px;
+            height: 72px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .frame-tl { top: 12px; left: 12px; }
+        .frame-tr { top: 12px; right: 12px; }
+        .frame-bl { bottom: 12px; left: 12px; }
+        .frame-br { bottom: 12px; right: 12px; }
 
         h1 {
             color: #8b4513;
@@ -67,7 +90,7 @@
         }
 
         p, .info-section p {
-            color: #4b4b4b;
+            color: #b3b3b3;
             font-weight: 700;
             font-size: 18px;
             line-height: 1.6;
@@ -115,7 +138,7 @@
             text-decoration: underline;
         }
         a:hover {
-            color: #a0522d;
+            color: #af8772;
         }
 
         .youtube-video-container {
@@ -173,7 +196,7 @@
         .info-section {
             margin-top: 20px;
             padding: 15px;
-            background-color: rgba(0,0,0, 0.03);
+            background-color: rgba(0,0,0, 0.07);
             border-radius: 8px;
             text-align: left;
         }
@@ -193,12 +216,15 @@
             font-size: 16px;
         }
         .social-icon {
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
+            object-fit: cover;
+            border-radius: 8px;
             margin: 0 8px;
             opacity: 0.8;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+
         .social-icon:hover {
             opacity: 1;
             transform: scale(1.1);
@@ -212,19 +238,77 @@
             width: 320px;
         }
 
-        .en h1, .ja h1 { font-size: 26px; }
-        .en p, .en .button, .ja p, .ja .button { font-size: 17px; }
-        .en .info-section p, .ja .info-section p { font-size: 16px; }
+        #trivia-progress-bar {
+            height: 5px;
+            width: 100%;
+            background: rgba(139,69,19,0.12);
+            border-radius: 3px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+        #trivia-progress-inner {
+            height: 100%;
+            width: 0%;
+            background: rgba(139,69,19,0.35);
+            transition: width 0.2s linear;
+        }
+        .info-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 24px 0;
+            height: 42px;
+        }
+        .divider-img {
+            background-position: 0 0;
+            background-size: 100% auto;
+            width: 12rem;
+            height: 1.8rem;
+            object-fit: contain;
+        }
+        .divider-img.left {
+            margin-right: 8px;
+        }
+        .divider-img.right {
+            margin-left: 8px;
+        }
+        .divider-line {
+            flex: 1;
+            height: 2px;
+            margin: 0 -10px;
+            margin-top: -11px;
+            background: #c6bca3;
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+
+        #auto_refresh {
+            color: #b3b3b3;
+            font-weight: 700;
+        }
+
+        .en h1 { font-size: 36px; }
+        .ja h1 { font-size: 25px; }
+        .en p, .en .button { font-size: 22px; }
+        .ja p, .ja .button { font-size: 17px; }
+        .en .info-section p { font-size: 21px; }
+        .ja .info-section p { font-size: 16px; }
 
     </style>
 </head>
 <body>
-<img src="body.jpg" alt="background" class="background-image">
-<a href="[https://www.monsterhunter.com/wilds/zh-hant/](https://www.monsterhunter.com/wilds/zh-hant/)" class="logo-link">
+<video autoplay loop muted playsinline id="background-video">
+    <source src="background.mp4" type="video/mp4">
+</video>
+<a href="https://www.monsterhunter.com/wilds/zh-hant/" class="logo-link">
     <img src="logo.webp" alt="Monster Hunter Wilds Logo">
 </a>
 
 <div class="container" id="content-container">
+    <img src="frame1.png" class="corner-frame frame-tl" alt="frame">
+    <img src="frame2.png" class="corner-frame frame-tr" alt="frame">
+    <img src="frame3.png" class="corner-frame frame-bl" alt="frame">
+    <img src="frame4.png" class="corner-frame frame-br" alt="frame">
     <h1 id="main-title">獵人眾多，伺服器努力工作中！</h1>
     <p id="main-message">各位獵人，感謝您的耐心！我們的伺服器正在全力處理湧入的請求。</p>
     <img src="image.gif" alt="Palico working hard" class="loading-image">
@@ -233,7 +317,19 @@
         <h2 id="status-title">目前情況</h2>
         <p id="status-text">我們正在密切監控伺服器負載，並調配更多資源。預計很快能恢復部分服務，請各位獵人稍後再嘗試。</p>
         <p id="timer-text">建議刷新時間：<span id="countdown">60</span> 秒</p>
+        <label style="display:block; margin-top:10px; font-size:16px; font-weight:700; color:#4b4b4b;">
+            <input type="checkbox" id="auto-refresh-toggle" style="margin-right:8px;">
+            <span id="auto_refresh" style="display:inline-block; vertical-align:middle; transform:translateY(-2px);">倒數結束自動刷新</span>
+        </label>
+
+
         <p id="queue-message" style="font-weight: normal; margin-top: 10px;"></p>
+    </div>
+
+    <div class="info-divider">
+        <img src="left_line.png" class="divider-img left" alt="">
+        <div class="divider-line"></div>
+        <img src="right_line.png" class="divider-img right" alt="">
     </div>
 
     <div class="info-section" id="reassurance-section">
@@ -241,27 +337,36 @@
         <p id="reassurance-text">若您剛才正在進行購買或重要操作，請不用擔心。系統設計有保護機制，您的交易資料是安全的。一旦服務恢復，您可以檢查您的訂單狀態或聯繫客服確認。</p>
     </div>
 
+    <div class="info-divider">
+        <img src="left_line.png" class="divider-img left" alt="">
+        <div class="divider-line"></div>
+        <img src="right_line.png" class="divider-img right" alt="">
+    </div>
+
     <div class="info-section" id="while-you-wait-section">
         <h2 id="wait-title">等待時，您可以...</h2>
         <ul style="text-align: left; padding-left: 20px; font-size: 18px; color: #4b4b4b; font-weight: 700;">
-            <li id="wait-opt1">觀看下方的最新遊戲預告片。</li>
-            <li id="wait-opt2">前往 <a href="[https://www.monsterhunter.com/wilds/zh-hant/](https://www.monsterhunter.com/wilds/zh-hant/)" target="_blank" id="official-site-link-wait">官方網站</a> 查閱最新消息。</li>
-            <li id="wait-opt3">在社群媒體上看看其他獵人的討論。</li>
-            <li id="mh-trivia-item" style="margin-top:10px;">
+            <p id="wait-opt1">觀看下方的最新遊戲預告片。</p>
+            <p id="wait-opt2">前往 <a href="https://www.monsterhunter.com/wilds/zh-hant/" target="_blank" id="official-site-link-wait">官方網站</a> 查閱最新消息。</p>
+            <p id="wait-opt3">在社群媒體上看看其他獵人的討論。</p>
+            <p id="mh-trivia-item" style="margin-top:10px;">
                 <strong id="trivia-title">狩獵小知識：</strong><span id="mh-trivia">你知道回復藥G怎麼合成嗎？回復藥 + 蜂蜜！</span>
-            </li>
+                <div id="trivia-progress-bar" style="height: 5px; width: 100%; background: rgba(139,69,19,0.12); border-radius: 3px; margin-top: 6px; overflow: hidden;">
+                    <div id="trivia-progress-inner" style="height: 100%; width: 0%; background: rgba(139,69,19,0.35); transition: width 0.2s linear;"></div>
+                </div>
+            </p>
         </ul>
     </div>
 
-    <a href="[https://www.monsterhunter.com/wilds/zh-hant/](https://www.monsterhunter.com/wilds/zh-hant/)" class="button" id="home-button">回首頁/重試</a>
-    <button onclick="location.reload();" class="button secondary" id="refresh-button">立即刷新</button>
+    <a href="https://www.monsterhunter.com/wilds/zh-hant/" class="button" id="home-button">回首頁/重試</a>
+    <a onclick="location.reload();" class="button secondary" id="refresh-button">立即刷新</a>
 
 
     <div class="social-links">
         <p id="social-text">追蹤我們以獲取即時更新：</p>
-        <a href="[https://x.com/MH_official_JP](https://x.com/MH_official_JP)" target="_blank"><img src="[https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/100px-X_logo_2023.svg.png](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/100px-X_logo_2023.svg.png)" alt="X (Twitter)" class="social-icon"></a>
-        <a href="[https://www.facebook.com/monsterhunter](https://www.facebook.com/monsterhunter)" target="_blank"><img src="[https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/100px-Facebook_f_logo_%282019%29.svg.png](https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/100px-Facebook_f_logo_%282019%29.svg.png)" alt="Facebook" class="social-icon"></a>
-        <a href="[https://www.youtube.com/@monsterhunter](https://www.youtube.com/@monsterhunter)" target="_blank"><img src="[https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/100px-YouTube_full-color_icon_%282017%29.svg.png](https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/100px-YouTube_full-color_icon_%282017%29.svg.png)" alt="YouTube" class="social-icon"></a>
+        <a href="https://www.facebook.com/monsterhunter" target="_blank"><img src="facebook_logo.png" alt="Facebook" class="social-icon"></a>
+        <a href="https://x.com/MH_Wilds/" target="_blank"><img src="X_logo.jpg" alt="X (Twitter)" class="social-icon"></a>
+        <a href="https://www.youtube.com/@monsterhunter" target="_blank"><img src="youtube_logo.jpg" alt="YouTube" class="social-icon"></a>
     </div>
 </div>
 
@@ -289,24 +394,27 @@
             statusTitle: "目前情況",
             statusText: "我們正在密切監控伺服器負載，並調配更多資源。預計很快能恢復部分服務，請各位獵人稍後再嘗試。",
             timerText: "建議刷新時間：",
+            autoRefreshLabel: "倒數結束自動刷新",
             reassuranceTitle: "請您放心",
             reassuranceText: "若您剛才正在進行購買或重要操作，請不用擔心。系統設計有保護機制，您的交易資料是安全的。一旦服務恢復，您可以檢查您的訂單狀態或聯繫客服確認。",
             waitTitle: "等待時，您可以...",
             waitOpt1: "觀看下方的最新遊戲預告片。",
-            waitOpt2: "前往 <a href='[https://www.monsterhunter.com/wilds/zh-hant/](https://www.monsterhunter.com/wilds/zh-hant/)' target='_blank' id='official-site-link-wait'>官方網站</a> 查閱最新消息。",
+            waitOpt2: "前往 <a href='https://www.monsterhunter.com/wilds/zh-hant/' target='_blank' id='official-site-link-wait'>官方網站</a> 查閱最新消息。",
             waitOpt3: "在社群媒體上看看其他獵人的討論。",
-            homeButton: "回首頁/重試",
+            homeButton: "回首頁",
             refreshButton: "立即刷新",
             socialText: "追蹤我們以獲取即時更新：",
             videoOverlayText: "《Street Fighter 6》特別合作登場！",
             youtubeId: "vlAm9kHEJ2s",
-            triviaTitle: "狩獵小知識：",
+            triviaTitle: "狩獵小知識： ",
             triviaTips: [
                 "你知道回復藥G怎麼合成嗎？回復藥 + 蜂蜜！",
                 "閃光彈對飛行中的火龍非常有效！",
                 "用餐時選擇貓飯技能，能讓狩獵更順利喔！",
                 "別忘了磨刀！武器的銳利度會影響傷害。",
-                "遇到轟龍？牠的火車非常危險，注意閃避！"
+                "遇到轟龍？牠的火車非常危險，注意閃避！",
+                "當兩隻魔物出現在同一區域時，一顆適時的「異臭彈」或許能幫您擺脫混戰的困境！",
+                "環境生物遍佈在各地圖中，有些能提供暫時的能力加成，有些則能當作投射物使用！"
             ],
             queueMessage: "排隊進度：前方約有 {hunters} 位獵人，請耐心等候。",
             queueStatusInProgress: "系統正在努力為您安排位置..."
@@ -318,24 +426,27 @@
             statusTitle: "Current Status",
             statusText: "We are closely monitoring server load and allocating more resources. We expect services to resume shortly. Please try again in a bit.",
             timerText: "Suggested refresh in: ",
+            autoRefreshLabel: "Auto-refresh when countdown ends",
             reassuranceTitle: "Rest Assured",
             reassuranceText: "If you were in the middle of a purchase or important action, please don't worry. Our system has safeguards, and your transaction data is secure. Once services are restored, please check your order status or contact support.",
             waitTitle: "While You Wait, You Can...",
             waitOpt1: "Watch the latest game trailer below.",
-            waitOpt2: "Visit the <a href='[https://www.monsterhunter.com/wilds/en-us/](https://www.monsterhunter.com/wilds/en-us/)' target='_blank' id='official-site-link-wait'>official website</a> for the latest news.",
+            waitOpt2: "Visit the <a href='https://www.monsterhunter.com/wilds/en-us/' target='_blank' id='official-site-link-wait'>official website</a> for the latest news.",
             waitOpt3: "Check out discussions from other hunters on social media.",
-            homeButton: "Home/Retry",
+            homeButton: "Home",
             refreshButton: "Refresh Now",
             socialText: "Follow us for live updates:",
             videoOverlayText: "Street Fighter 6 Special Collaboration Event!",
             youtubeId: "vlAm9kHEJ2s",
-            triviaTitle: "Hunting Tip:",
+            triviaTitle: "Hunting Tip: ",
             triviaTips: [
                 "Did you know Mega Potion is crafted from Potion + Honey?",
                 "Flash Bombs are very effective against flying Rathalos!",
                 "Choose your Canteen skills wisely before a hunt!",
                 "Don't forget to sharpen your weapon! Sharpness affects damage.",
-                "Facing a Tigrex? Its charge is dangerous, be careful to dodge!"
+                "Facing a Tigrex? Its charge is dangerous, be careful to dodge!",
+                "When two monsters are in the same area, a well-timed Dung Bomb can help you escape a chaotic brawl!",
+                "Endemic Life is found all over the maps; some grant temporary buffs, while others can be used as projectiles!"
             ],
             queueMessage: "Simulated Queue Progress: Approximately {hunters} hunters ahead of you. Please wait patiently.",
             queueStatusInProgress: "System is working hard to find you a spot..."
@@ -347,24 +458,27 @@
             statusTitle: "現在の状況",
             statusText: "サーバーの負荷を注視し、リソースを増強中です。間もなく一部サービスが復旧する見込みです。ハンターの皆様は、しばらくしてから再度お試しください。",
             timerText: "推奨リフレッシュ時間：",
+            autoRefreshLabel: "カウントダウン終了後に自動更新",
             reassuranceTitle: "ご安心ください",
             reassuranceText: "購入手続きや重要な操作の最中だった場合でもご安心ください。システムには保護機能があり、お客様の取引データは安全です。サービス復旧後、注文状況をご確認いただくか、サポートまでお問い合わせください。",
             waitTitle: "お待ちの間、こちらをご覧ください...",
             waitOpt1: "下の最新ゲームトレーラーをご覧ください。",
-            waitOpt2: "<a href='[https://www.monsterhunter.com/wilds/ja-jp/](https://www.monsterhunter.com/wilds/ja-jp/)' target='_blank' id='official-site-link-wait'>公式サイト</a>で最新情報をご確認ください。",
+            waitOpt2: "<a href='https://www.monsterhunter.com/wilds/ja-jp/' target='_blank' id='official-site-link-wait'>公式サイト</a>で最新情報をご確認ください。",
             waitOpt3: "ソーシャルメディアで他のハンターの議論をチェックしましょう。",
-            homeButton: "ホームへ/再試行",
+            homeButton: "ホームへ",
             refreshButton: "今すぐ更新",
             socialText: "リアルタイムの更新情報をフォローしてください：",
             videoOverlayText: "『ストリートファイター6』スペシャルコラボ開催！",
             youtubeId: "vlAm9kHEJ2s",
-            triviaTitle: "狩りの豆知識：",
+            triviaTitle: "狩りの豆知識： ",
             triviaTips: [
                 "グレート回復薬の調合方法を知っていますか？ 回復薬＋ハチミツですよ！",
                 "閃光玉は飛行中のリオレウスに非常に効果的です！",
                 "食事スキルを選んで、狩りを有利に進めましょう！",
                 "武器の研磨を忘れずに！斬れ味はダメージに影響します。",
-                "ティガレックスに遭遇？突進は非常に危険なので、回避に注意！"
+                "ティガレックスに遭遇？突進は非常に危険なので、回避に注意！",
+                "2体のモンスターが同じエリアに現れた時、タイミング良く「こやし玉」を使えば、混戦を避けられるかもしれません！",
+                "環境生物は各マップの至る所にいます。一時的な能力強化を得られるものや、投射物として使えるものもいます！"
             ],
             queueMessage: "模擬待機列の状況：前方には約 {hunters} 人のハンターがいます。しばらくお待ちください。",
             queueStatusInProgress: "システムが空き状況を確認しています..."
@@ -378,17 +492,31 @@
 
     function startCountdown(duration, display) {
         let timer = duration, seconds;
-        clearInterval(countdownInterval); // Clear existing interval
+        clearInterval(countdownInterval);
         countdownInterval = setInterval(function () {
             seconds = parseInt(timer % 60, 10);
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            display.textContent = seconds;
-
+            display.textContent = seconds < 10 ? "0" + seconds : seconds;
             if (--timer < 0) {
                 display.textContent = "00";
                 clearInterval(countdownInterval);
+                const autoRefresh = document.getElementById("auto-refresh-toggle");
+                if (autoRefresh && autoRefresh.checked) {
+                    location.reload();
+                }
             }
         }, 1000);
+    }
+
+    function startTriviaProgressBar(durationMs = 7000) {
+        const bar = document.getElementById('trivia-progress-inner');
+        if (bar) {
+            bar.style.transition = 'none';
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.transition = `width ${durationMs}ms linear`;
+                bar.style.width = '100%';
+            }, 20);
+        }
     }
 
     function updateTrivia() {
@@ -402,13 +530,18 @@
             currentTriviaIndex = (currentTriviaIndex + 1) % currentLangContent.triviaTips.length;
             triviaElement.textContent = currentLangContent.triviaTips[currentTriviaIndex];
         }
+        startTriviaProgressBar();
     }
 
     function resetTriviaCycle() {
         clearInterval(triviaInterval);
         currentTriviaIndex = -1;
         updateTrivia();
-        triviaInterval = setInterval(updateTrivia, 7000);
+        startTriviaProgressBar();
+        triviaInterval = setInterval(() => {
+            updateTrivia();
+            startTriviaProgressBar();
+        }, 7000);
     }
 
     function updateSimulatedQueueMessage() {
@@ -445,6 +578,16 @@
 
         container.querySelector("#status-title").innerHTML = currentContent.statusTitle;
         container.querySelector("#status-text").innerHTML = currentContent.statusText;
+        const videoOverlayTextElement = document.getElementById("video-overlay-text-content");
+        if (videoOverlayTextElement) {
+            videoOverlayTextElement.textContent = currentContent.videoOverlayText;
+
+            if (lang === 'en') {
+                videoOverlayTextElement.style.fontFamily = '\'Markazi Text\', "source-han-serif-japanese", serif';
+            } else {
+                videoOverlayTextElement.style.fontFamily = '';
+            }
+        }
 
         const countdownTextEl = container.querySelector("#timer-text");
         const countdownSpan = countdownTextEl.querySelector("#countdown") || document.createElement('span');
@@ -461,6 +604,7 @@
         const waitOpt2Link = container.querySelector("#wait-opt2");
         waitOpt2Link.innerHTML = currentContent.waitOpt2;
 
+        document.getElementById("auto_refresh").textContent = currentContent.autoRefreshLabel;
 
         container.querySelector("#wait-opt3").innerHTML = currentContent.waitOpt3;
 
@@ -472,9 +616,9 @@
 
         const logoLink = document.querySelector(".logo-link");
         const homeButtonLink = container.querySelector("#home-button");
-        let officialSiteUrl = '[https://www.monsterhunter.com/wilds/zh-hant/](https://www.monsterhunter.com/wilds/zh-hant/)';
-        if (lang === 'en') officialSiteUrl = '[https://www.monsterhunter.com/wilds/en-us/](https://www.monsterhunter.com/wilds/en-us/)';
-        if (lang === 'ja') officialSiteUrl = '[https://www.monsterhunter.com/wilds/ja-jp/](https://www.monsterhunter.com/wilds/ja-jp/)';
+        let officialSiteUrl = 'https://www.monsterhunter.com/wilds/zh-hant/';
+        if (lang === 'en') officialSiteUrl = 'https://www.monsterhunter.com/wilds/en-us/';
+        if (lang === 'ja') officialSiteUrl = 'https://www.monsterhunter.com/wilds/ja-jp/';
 
         logoLink.href = officialSiteUrl;
         homeButtonLink.href = officialSiteUrl;
@@ -506,6 +650,8 @@
         }
         changeLanguage();
     });
+
+
 
 </script>
 </body>
