@@ -1,7 +1,7 @@
 const content = {
     "zh-TW": {
         pageTitle: "MONSTER HUNTER WILDS | 伺服器努力工作中",
-        mainTitle: "獵人眾多，伺服器努力工作中！",
+        mainTitle: "獵人眾多，伺服器努力工作中！ ",
         mainMessage: "各位獵人，感謝您的耐心！我們的伺服器正在全力處理湧入的請求。",
         statusTitle: "目前情況",
         statusText: "我們正在密切監控伺服器負載，並調配更多資源。預計很快能恢復部分服務，請各位獵人稍後再嘗試。",
